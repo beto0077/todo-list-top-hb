@@ -1,0 +1,49 @@
+import { loadProjectsMemory, saveProjects } from "../storage/local-storage";
+import { Project } from "../models/Project";
+import { loadProjectsGrid, bindDataLoad } from "../display/main-display";
+import { bindFormSubmit, bindDeleteProject } from "../display/project-display";
+
+let projectList = [];
+
+function updateProjectList() {
+    projectList = loadProjectsMemory();
+    loadProjectsGrid(projectList);
+}
+
+function createProject(projectData) {
+    projectList.push(new Project(projectData.name));
+    saveProjects(projectList);
+    loadProjectsGrid(projectList);
+}
+
+function deleteProject(projectId) {
+    const indexToDelete = projectList.findIndex(item => item.id === projectId);
+    if (indexToDelete !== -1) {
+        projectList.splice(indexToDelete, 1);
+    }
+    saveProjects(projectList);
+    loadProjectsGrid(projectList);
+}
+
+// export function addNewTask(projectId, newTodo) {
+//     const projectIndex = projectList.findIndex(item => item.id === projectId);
+//     if (projectIndex !== -1) {
+//         projectList[projectIndex].addTask(newTodo);
+//     }
+// }
+
+// function loadProjectTasks(projectId) {
+//     const projectIndex = projectList.findIndex(item => item.id === projectId);
+//     if (projectIndex !== -1) {
+//         const currentTasks = projectList[projectIndex].getTasks();
+//         currentTasks.forEach(task => {
+//             console.log(task);
+//         });
+//     }
+//     displayProjectTasks();
+// }
+
+bindDataLoad(updateProjectList);
+bindFormSubmit(createProject);
+bindDeleteProject(deleteProject);
+console.log("I think I'm online bro...");
