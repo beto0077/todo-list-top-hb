@@ -1,7 +1,8 @@
 import { loadProjectsMemory, saveProjects } from "../storage/local-storage";
 import { Project } from "../models/Project";
 import { loadProjectsGrid, bindDataLoad } from "../display/main-display";
-import { bindFormSubmit, bindDeleteProject } from "../display/project-display";
+import { bindProjectFormSubmit, bindOpenProject, bindDeleteProject } from "../display/project-display";
+import { setActiveProject, bindStorageSavingTool } from "./todo-controller";
 
 let projectList = [];
 
@@ -32,18 +33,16 @@ function deleteProject(projectId) {
 //     }
 // }
 
-// function loadProjectTasks(projectId) {
-//     const projectIndex = projectList.findIndex(item => item.id === projectId);
-//     if (projectIndex !== -1) {
-//         const currentTasks = projectList[projectIndex].getTasks();
-//         currentTasks.forEach(task => {
-//             console.log(task);
-//         });
-//     }
-//     displayProjectTasks();
-// }
+function loadActiveProject(projectId) {
+    const projectIndex = projectList.findIndex(item => item.id === projectId);
+    if (projectIndex !== -1) {
+        setActiveProject(projectList[projectIndex]);
+    }
+}
 
 bindDataLoad(updateProjectList);
-bindFormSubmit(createProject);
+bindProjectFormSubmit(createProject);
+bindOpenProject(loadActiveProject);
 bindDeleteProject(deleteProject);
+bindStorageSavingTool(() => saveProjects(projectList));
 console.log("I think I'm online bro...");

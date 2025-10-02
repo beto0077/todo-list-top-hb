@@ -1,0 +1,65 @@
+export function createTodoForm() {
+    const formBody = document.createElement("form");
+    const fieldsetBody = document.createElement("fieldset");
+    const legend = document.createElement("legend");
+    const titleBox = document.createElement("div");
+    const titleInputLabel = document.createElement("label");
+    const titleInput = document.createElement("input");
+    const descriptionBox = document.createElement("div");
+    const descriptionTextareaLabel = document.createElement("label");
+    const descriptionTextarea = document.createElement("textarea");
+    const dueDateBox = document.createElement("div");
+    const dueDateLabel = document.createElement("label");
+    const dueDate = document.createElement("input");
+    const priorityBox = document.createElement("div");
+    const priorityInputLabel = document.createElement("label");
+    const priorityInput = document.createElement("input");
+    const submitButton = document.createElement("button");
+
+    formBody.classList.add("todo-form");
+    legend.textContent = "Create new task:";
+    titleInputLabel.htmlFor = "todo-title";
+    titleInputLabel.textContent = "Title:";
+    titleInput.type = "text";
+    titleInput.id = "todo-title";
+    titleInput.name = "title";
+    titleInput.required = true;
+    descriptionTextareaLabel.htmlFor = "todo-description";
+    descriptionTextareaLabel.textContent = "Description:";
+    descriptionTextarea.id = "todo-description";
+    descriptionTextarea.name = "description";
+    descriptionTextarea.required = true;
+    dueDateLabel.htmlFor = "todo-due-date";
+    dueDateLabel.textContent = "Due date:";
+    dueDate.type = "date";
+    dueDate.id = "todo-due-date";
+    dueDate.name = "dueDate";
+    dueDate.required = true;
+    priorityInputLabel.htmlFor = "todo-priority";
+    priorityInputLabel.textContent = "Priority:";
+    priorityInput.type = "number";
+    priorityInput.id = "todo-priority";
+    priorityInput.name = "priority";
+    priorityInput.required = true;
+    submitButton.classList.add("submit-button");
+    submitButton.type = "submit";
+    submitButton.textContent = "Create Task";
+
+    fieldsetBody.appendChild(legend);
+    titleBox.appendChild(titleInputLabel);
+    titleBox.appendChild(titleInput);
+    fieldsetBody.appendChild(titleBox);
+    descriptionBox.appendChild(descriptionTextareaLabel);
+    descriptionBox.appendChild(descriptionTextarea);
+    fieldsetBody.appendChild(descriptionBox);
+    dueDateBox.appendChild(dueDateLabel);
+    dueDateBox.appendChild(dueDate);
+    fieldsetBody.appendChild(dueDateBox);
+    priorityBox.appendChild(priorityInputLabel);
+    priorityBox.appendChild(priorityInput);
+    fieldsetBody.appendChild(priorityBox);
+    fieldsetBody.appendChild(submitButton);
+    formBody.appendChild(fieldsetBody);
+
+    return formBody;
+}

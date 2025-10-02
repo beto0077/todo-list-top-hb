@@ -10,6 +10,7 @@ export function createProjectForm() {
     formBody.classList.add("project-form");
     legend.textContent = "Create new project:";
     nameInputLabel.htmlFor = "project-name";
+    nameInputLabel.textContent = "Project name:";
     nameInput.type = "text";
     nameInput.id = "project-name";
     nameInput.name = "name";
