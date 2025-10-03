@@ -26,13 +26,6 @@ function deleteProject(projectId) {
     loadProjectsGrid(projectList);
 }
 
-// export function addNewTask(projectId, newTodo) {
-//     const projectIndex = projectList.findIndex(item => item.id === projectId);
-//     if (projectIndex !== -1) {
-//         projectList[projectIndex].addTask(newTodo);
-//     }
-// }
-
 function loadActiveProject(projectId) {
     const projectIndex = projectList.findIndex(item => item.id === projectId);
     if (projectIndex !== -1) {

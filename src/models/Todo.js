@@ -17,6 +17,12 @@ export class Todo {
         return this.notes;
     }
 
+    deleteNote(NoteIndex) {
+        if (NoteIndex !== -1) {
+            this.notes.splice(NoteIndex, 1);
+        }
+    }
+
     changeStatusCompleted () {
         this.completed = !this.completed;
     }

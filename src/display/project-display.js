@@ -35,18 +35,11 @@ export function bindDeleteProject(callback) {
     onClickDelete = callback;
 }
 
-// export function displayProjectForm(container) {
-//     container.appendChild(createProjectForm());
-//     const projectForm = document.querySelector(".project-form");
-//     projectForm.addEventListener("submit", handleFormSubmit);
-// }
-
 export function displayProjectForm(container) {
     const projectForm = createProjectForm();
     projectForm.addEventListener("submit", handleFormSubmit);
     container.appendChild(projectForm);
 }
-
 
 export function displayProjectsGrid(container, projects) {
     const gridContainer = document.createElement("div");
@@ -63,12 +56,3 @@ export function displayProjectsGrid(container, projects) {
 
     container.appendChild(gridContainer);
 }
-// export function displayProjectTasks() {
-//     const projectIndex = projectList.findIndex(item => item.id === projectId);
-//     if (projectIndex !== -1) {
-//         const currentTasks = projectList[projectIndex].getTasks();
-//         currentTasks.forEach(task => {
-//             console.log(task);
-//         });
-//     }
-// }

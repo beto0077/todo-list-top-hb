@@ -1,10 +1,15 @@
 import { createTodoForm } from "../ui/todo-form";
 import { createTodoCard } from "../ui/todo-card";
+import { createNoteForm } from "../ui/note-form";
+import { createNoteCard } from "../ui/note-card";
 
-let onFormSubmit = null;
-let onClickDelete = null;
+let onTodoFormSubmit = null;
+let onNoteFormSubmit = null;
+let onClickOpenNotes = null;
+let onClickDeleteTodo = null;
+let onClickDeleteNote = null;
 
-function handleFormSubmit(event) {
+function handleTodoFormSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const todoData = {
@@ -14,25 +19,61 @@ function handleFormSubmit(event) {
         priority: formData.get("priority"),
     }
     event.target.reset();
-    if (onFormSubmit) onFormSubmit(todoData);
+    if (onTodoFormSubmit) onTodoFormSubmit(todoData);
+}
+
+function handleNoteFormSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const noteData = {
+        note: formData.get("note-text"),
+    }
+    event.target.reset();
+    if (onNoteFormSubmit) onNoteFormSubmit(noteData);
+}
+
+function handleOpenNotes(event) {
+    if (onClickOpenNotes) onClickOpenNotes(event.target.parentNode.parentNode.id);
 }
 
 function handleDeleteTodo(event) {
-    if (onClickDelete) onClickDelete(event.target.parentNode.parentNode.id);
+    if (onClickDeleteTodo) onClickDeleteTodo(event.target.parentNode.parentNode.id);
+}
+
+function handleDeleteNote(event) {
+    if (onClickDeleteNote) onClickDeleteNote(event.target.parentNode.id);
 }
 
 export function bindTodoFormSubmit(callback) {
-    onFormSubmit = callback;
+    onTodoFormSubmit = callback;
+}
+
+export function bindNoteSubmit(callback) {
+    onNoteFormSubmit = callback;
+}
+
+export function bindOpenNotes(callback) {
+    onClickOpenNotes = callback;
 }
 
 export function bindDeleteTodo(callback) {
-    onClickDelete = callback;
+    onClickDeleteTodo = callback;
+}
+
+export function bindDeleteNote(callback) {
+    onClickDeleteNote = callback;
 }
 
 export function displayTodoForm(container) {
     const todoForm = createTodoForm();
-    todoForm.addEventListener("submit", handleFormSubmit);
+    todoForm.addEventListener("submit", handleTodoFormSubmit);
     container.appendChild(todoForm);
+}
+
+export function displayNoteForm(container) {
+    const noteForm = createNoteForm();
+    noteForm.addEventListener("submit", handleNoteFormSubmit);
+    container.appendChild(noteForm);
 }
 
 export function displayTodosGrid(container, todos) {
@@ -41,9 +82,25 @@ export function displayTodosGrid(container, todos) {
 
     todos.forEach(todo => {
         const todoCard = createTodoCard(todo);
+        const openButton = todoCard.querySelector('button[data-action="open"]');
         const deleteButton = todoCard.querySelector('button[data-action="delete"]');
+        openButton.addEventListener("click", handleOpenNotes);
         deleteButton.addEventListener("click", handleDeleteTodo);
         gridContainer.appendChild(todoCard);
+    });
+
+    container.appendChild(gridContainer);
+}
+
+export function displayNotesGrid(container, notes) {
+    const gridContainer = document.createElement("div");
+    gridContainer.classList.add("note-grid");
+
+    notes.forEach((note, index) => {
+        const noteCard = createNoteCard(note, index);
+        const deleteButton = noteCard.querySelector('button[data-action="delete"]');
+        deleteButton.addEventListener("click", handleDeleteNote);
+        gridContainer.appendChild(noteCard);
     });
 
     container.appendChild(gridContainer);
