@@ -21,6 +21,7 @@ export function createTodoCard(todo) {
     totalNotesTask.textContent = `Active task notes: ${todo.notes.length}`;
     completedBox.classList.add("todo-completed-box");
     completedLabel.textContent = "Task completed:";
+    completedButton.dataset.action = "change-status";
     completedButton.textContent = todo.completed ? "Completed ✓" : "Not completed ✗";
     buttonsBox.classList.add("todo-card-buttons");
     openNotesButton.dataset.action = "open";

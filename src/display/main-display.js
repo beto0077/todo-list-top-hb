@@ -74,24 +74,24 @@ export function loadProjectsGrid(projects) {
     displayProjectsGrid(mainSiteContent, projects);
 }
 
-export function loadTodosGrid(projectTodos) {
+export function loadTodosGrid(projectName, projectTodos) {
     projectsButton.style.display = "block";
     newProjectButton.style.display = "none";
     newTodoButton.style.display = "block";
     newNoteButton.style.display = "none";
     backTasksButton.style.display = "none";
     cleanContainer(mainSiteContent);
-    displayTodosGrid(mainSiteContent, projectTodos);
+    displayTodosGrid(mainSiteContent, projectName, projectTodos);
 }
 
-export function loadTodoNotes(notes) {
+export function loadTodoNotes(todoTitle, notes) {
     projectsButton.style.display = "none";
     newProjectButton.style.display = "none";
     newTodoButton.style.display = "none";
     newNoteButton.style.display = "block";
     backTasksButton.style.display = "block";
     cleanContainer(mainSiteContent);
-    displayNotesGrid(mainSiteContent, notes);
+    displayNotesGrid(mainSiteContent, todoTitle, notes);
 }
 
 navigationButtons.forEach(button => {

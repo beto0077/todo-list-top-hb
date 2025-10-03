@@ -6,6 +6,7 @@ import { createNoteCard } from "../ui/note-card";
 let onTodoFormSubmit = null;
 let onNoteFormSubmit = null;
 let onClickOpenNotes = null;
+let onClickChangeStatus = null;
 let onClickDeleteTodo = null;
 let onClickDeleteNote = null;
 
@@ -36,6 +37,10 @@ function handleOpenNotes(event) {
     if (onClickOpenNotes) onClickOpenNotes(event.target.parentNode.parentNode.id);
 }
 
+function handleChangeStatus(event) {
+    if (onClickChangeStatus) onClickChangeStatus(event.target.parentNode.parentNode.id);
+}
+
 function handleDeleteTodo(event) {
     if (onClickDeleteTodo) onClickDeleteTodo(event.target.parentNode.parentNode.id);
 }
@@ -54,6 +59,10 @@ export function bindNoteSubmit(callback) {
 
 export function bindOpenNotes(callback) {
     onClickOpenNotes = callback;
+}
+
+export function bindChangeStatus(callback) {
+    onClickChangeStatus = callback;
 }
 
 export function bindDeleteTodo(callback) {
@@ -76,25 +85,32 @@ export function displayNoteForm(container) {
     container.appendChild(noteForm);
 }
 
-export function displayTodosGrid(container, todos) {
+export function displayTodosGrid(container, projectName, todos) {
     const gridContainer = document.createElement("div");
+    const projectNameHeading = document.createElement("h2");
     gridContainer.classList.add("todo-grid");
+    projectNameHeading.textContent = projectName;
 
     todos.forEach(todo => {
         const todoCard = createTodoCard(todo);
         const openButton = todoCard.querySelector('button[data-action="open"]');
+        const changeStatusButton = todoCard.querySelector('button[data-action="change-status"]');
         const deleteButton = todoCard.querySelector('button[data-action="delete"]');
         openButton.addEventListener("click", handleOpenNotes);
+        changeStatusButton.addEventListener("click", handleChangeStatus);
         deleteButton.addEventListener("click", handleDeleteTodo);
         gridContainer.appendChild(todoCard);
     });
 
+    container.appendChild(projectNameHeading);
     container.appendChild(gridContainer);
 }
 
-export function displayNotesGrid(container, notes) {
+export function displayNotesGrid(container, todoTitle, notes) {
     const gridContainer = document.createElement("div");
+    const todoTitleHeading = document.createElement("h2");
     gridContainer.classList.add("note-grid");
+    todoTitleHeading.textContent = todoTitle;
 
     notes.forEach((note, index) => {
         const noteCard = createNoteCard(note, index);
@@ -103,5 +119,6 @@ export function displayNotesGrid(container, notes) {
         gridContainer.appendChild(noteCard);
     });
 
+    container.appendChild(todoTitleHeading);
     container.appendChild(gridContainer);
 }
