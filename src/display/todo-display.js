@@ -1,3 +1,4 @@
+import "../styles/todo.css";
 import { createTodoForm } from "../ui/todo-form";
 import { createTodoCard } from "../ui/todo-card";
 import { createNoteForm } from "../ui/note-form";

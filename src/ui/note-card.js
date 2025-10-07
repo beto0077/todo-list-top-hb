@@ -6,8 +6,10 @@ export function createNoteCard(note, noteIndex) {
     cardContainer.id = noteIndex;
     cardContainer.classList.add("note-card");
     noteText.textContent = note;
+    deleteButton.classList.add("card-button");
+    deleteButton.classList.add("delete-button");
     deleteButton.dataset.action = "delete";
-    deleteButton.textContent = "Delete";
+    deleteButton.textContent = "X";
 
     cardContainer.appendChild(noteText);
     cardContainer.appendChild(deleteButton);

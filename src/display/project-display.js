@@ -1,3 +1,4 @@
+import "../styles/project.css";
 import { createProjectForm } from "../ui/project-form";
 import { createProjectCard } from "../ui/project-card";
 

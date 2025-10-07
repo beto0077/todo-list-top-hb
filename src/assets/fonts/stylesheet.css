@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Archivo Narrow';
+    src: url('ArchivoNarrow-Regular.woff2') format('woff2'),
+        url('ArchivoNarrow-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Archivo Narrow';
+    src: url('ArchivoNarrow-Bold.woff2') format('woff2'),
+        url('ArchivoNarrow-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Happy Monkey';
+    src: url('HappyMonkey-Regular.woff2') format('woff2'),
+        url('HappyMonkey-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

@@ -1,6 +1,6 @@
 export function createTodoCard(todo) {
     const cardContainer = document.createElement("div");
-    const title = document.createElement("p");
+    const title = document.createElement("h3");
     const description = document.createElement("p");
     const dueDate = document.createElement("p");
     const priority = document.createElement("p");
@@ -21,11 +21,17 @@ export function createTodoCard(todo) {
     totalNotesTask.textContent = `Active task notes: ${todo.notes.length}`;
     completedBox.classList.add("todo-completed-box");
     completedLabel.textContent = "Task completed:";
+    completedButton.classList.add(todo.completed ? "completed" : "uncompleted");
+    completedButton.classList.add("completed-button");
     completedButton.dataset.action = "change-status";
     completedButton.textContent = todo.completed ? "Completed ✓" : "Not completed ✗";
     buttonsBox.classList.add("todo-card-buttons");
+    openNotesButton.classList.add("card-button");
+    openNotesButton.classList.add("open-button");
     openNotesButton.dataset.action = "open";
     openNotesButton.textContent = "Open notes";
+    deleteButton.classList.add("card-button");
+    deleteButton.classList.add("delete-button");
     deleteButton.dataset.action = "delete";
     deleteButton.textContent = "Delete";
 

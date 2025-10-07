@@ -1,0 +1,73 @@
+@import "../styles/fonts.css";
+
+.project-grid {
+    border: 1px solid yellow;
+    /* flex: 1; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.project-card {
+    max-height: 350px;
+    max-width: 450px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+
+    /* background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(255, 255, 255, 0.979) 0.1%, rgba(233, 226, 226, 0.534) 90.1%); */
+    background-image: radial-gradient( circle 621px at 25.3% 13.8%,  rgba(255,255,255,1) 0%, rgba(234,236,255,1) 90% );
+    border: none;
+    border-radius: 15px 5px 15px 5px;
+    box-shadow: 2px 2px 4px black;
+
+    h3 {
+        font-family: "Archivo Narrow Bold", Arial, Helvetica, sans-serif;
+    }
+
+    p {
+        font-family: "Archivo Narrow Regular", Arial, Helvetica, sans-serif;
+    }
+}
+
+.project-card-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.project-form {
+    background-color: white;
+    padding: 1rem 0.5rem 0.5rem 0.5rem;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 2px 2px 4px black;
+
+    fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem 2rem 2rem 2rem;
+
+        border: none;
+
+        legend {
+            font-family: "Archivo Narrow Bold", Arial, Helvetica, sans-serif;
+            font-size: 2rem;
+        }
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+
+        label,
+        input {
+            font-family: "Archivo Narrow Regular", Arial, Helvetica, sans-serif;
+            font-size: 1.2rem;
+        }
+    }
+}
