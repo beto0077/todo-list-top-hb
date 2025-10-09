@@ -35,14 +35,20 @@ function loadContent(event) {
             break;
 
         case "new-project":
+            projectsButton.style.display = "block";
+            newProjectButton.style.display = "none";
             displayProjectForm(mainSiteContent);
             break;
 
         case "new-todo":
+            projectsButton.style.display = "none";
+            newTodoButton.style.display = "none";
+            backTasksButton.style.display = "block";
             displayTodoForm(mainSiteContent);
             break;
 
         case "new-note":
+            newNoteButton.style.display = "none";
             displayNoteForm(mainSiteContent);
             break;
 

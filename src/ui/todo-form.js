@@ -40,6 +40,9 @@ export function createTodoForm() {
     priorityInput.type = "number";
     priorityInput.id = "todo-priority";
     priorityInput.name = "priority";
+    priorityInput.min = 1;
+    priorityInput.max = 10;
+    priorityInput.placeholder = "Enter a number between 1 and 10";
     priorityInput.required = true;
     submitButton.classList.add("submit-button");
     submitButton.type = "submit";

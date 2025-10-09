@@ -4,6 +4,7 @@ import { createTodoCard } from "../ui/todo-card";
 import { createNoteForm } from "../ui/note-form";
 import { createNoteCard } from "../ui/note-card";
 import { createEmptyListMsg } from "../ui/empty-list-message";
+import { askDeletionConfirmation } from "../ui/deletion-confirmation";
 
 let onTodoFormSubmit = null;
 let onNoteFormSubmit = null;
@@ -44,11 +45,15 @@ function handleChangeStatus(event) {
 }
 
 function handleDeleteTodo(event) {
-    if (onClickDeleteTodo) onClickDeleteTodo(event.target.parentNode.parentNode.id);
+    if (askDeletionConfirmation("task")) {
+        if (onClickDeleteTodo) onClickDeleteTodo(event.target.parentNode.parentNode.id);
+    }
 }
 
 function handleDeleteNote(event) {
-    if (onClickDeleteNote) onClickDeleteNote(event.target.parentNode.id);
+    if (askDeletionConfirmation("note")) {
+        if (onClickDeleteNote) onClickDeleteNote(event.target.parentNode.id);
+    }
 }
 
 export function bindTodoFormSubmit(callback) {

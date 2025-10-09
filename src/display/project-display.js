@@ -2,6 +2,7 @@ import "../styles/project.css";
 import { createProjectForm } from "../ui/project-form";
 import { createProjectCard } from "../ui/project-card";
 import { createEmptyListMsg } from "../ui/empty-list-message";
+import { askDeletionConfirmation } from "../ui/deletion-confirmation";
 
 let onFormSubmit = null;
 let onClickOpen = null;
@@ -22,7 +23,9 @@ function handleOpenProject(event) {
 }
 
 function handleDeleteProject(event) {
-    if (onClickDelete) onClickDelete(event.target.parentNode.parentNode.id);
+    if (askDeletionConfirmation("project")) {
+        if (onClickDelete) onClickDelete(event.target.parentNode.parentNode.id);
+    }
 }
 
 export function bindProjectFormSubmit(callback) {
