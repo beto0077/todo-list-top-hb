@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 export function createTodoCard(todo) {
     const cardContainer = document.createElement("div");
     const title = document.createElement("h3");
@@ -16,7 +18,7 @@ export function createTodoCard(todo) {
     cardContainer.classList.add("todo-card");
     title.textContent = todo.title;
     description.textContent = todo.description;
-    dueDate.textContent = `Due date: ${todo.dueDate}`;
+    dueDate.textContent = `Due date: ${format(todo.dueDate, "EEEE, dd MMMM, yyyy")}`;
     priority.textContent = `Priority: ${todo.priority}`;
     totalNotesTask.textContent = `Active task notes: ${todo.notes.length}`;
     completedBox.classList.add("todo-completed-box");

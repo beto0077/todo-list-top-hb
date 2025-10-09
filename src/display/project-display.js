@@ -1,6 +1,7 @@
 import "../styles/project.css";
 import { createProjectForm } from "../ui/project-form";
 import { createProjectCard } from "../ui/project-card";
+import { createEmptyListMsg } from "../ui/empty-list-message";
 
 let onFormSubmit = null;
 let onClickOpen = null;
@@ -43,17 +44,21 @@ export function displayProjectForm(container) {
 }
 
 export function displayProjectsGrid(container, projects) {
-    const gridContainer = document.createElement("div");
-    gridContainer.classList.add("project-grid");
+    if (projects.length === 0) {
+        const emptyListMsg = createEmptyListMsg("projects");
+        container.appendChild(emptyListMsg);
+    } else {
+        const gridContainer = document.createElement("div");
+        gridContainer.classList.add("project-grid");
+        projects.forEach(project => {
+            const projectCard = createProjectCard(project);
+            const openButton = projectCard.querySelector('button[data-action="open"]');
+            const deleteButton = projectCard.querySelector('button[data-action="delete"]');
+            openButton.addEventListener("click", handleOpenProject);
+            deleteButton.addEventListener("click", handleDeleteProject);
+            gridContainer.appendChild(projectCard);
+        });
 
-    projects.forEach(project => {
-        const projectCard = createProjectCard(project);
-        const openButton = projectCard.querySelector('button[data-action="open"]');
-        const deleteButton = projectCard.querySelector('button[data-action="delete"]');
-        openButton.addEventListener("click", handleOpenProject);
-        deleteButton.addEventListener("click", handleDeleteProject);
-        gridContainer.appendChild(projectCard);
-    });
-
-    container.appendChild(gridContainer);
+        container.appendChild(gridContainer);
+    }
 }

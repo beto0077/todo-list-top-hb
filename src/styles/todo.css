@@ -1,5 +1,5 @@
 @import "../styles/fonts.css";
-@import "../styles/buttons.css";
+@import "../styles/general-components.css";
 
 h2 {
     margin-bottom: 0.5rem;
@@ -10,11 +10,21 @@ h2 {
     text-shadow: 1px 1px 1px black;
 }
 
+.grid-container-box{
+    border: 1px solid purple;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .todo-grid,
 .note-grid {
     border: 1px solid yellow;
-    height: 100%;
-    width: 100%;
+    /* min-width: calc(300 / 100 * 1vw); */
+    max-width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
@@ -39,6 +49,7 @@ h2 {
 
     h3 {
         font-family: "Archivo Narrow Bold", Arial, Helvetica, sans-serif;
+        font-size: 1.4rem;
     }
 
     p {
@@ -91,6 +102,8 @@ h2 {
         }
 
         textarea {
+            padding: 0.2rem;
+
             font-family: "Archivo Narrow Regular", Arial, Helvetica, sans-serif;
             font-size: 1rem;
             min-height: 150px;
@@ -101,7 +114,7 @@ h2 {
 /* Note style */
 .note-card {
     max-height: fit-content;
-    max-width: 300px;
+    max-width: 400px;
 
     display: flex;
     flex-direction: column;
@@ -157,6 +170,8 @@ h2 {
         }
 
         textarea {
+            padding: 0.2rem;
+
             font-family: "Archivo Narrow Regular", Arial, Helvetica, sans-serif;
             font-size: 1rem;
             min-height: 150px;

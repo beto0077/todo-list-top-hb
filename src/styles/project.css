@@ -1,4 +1,5 @@
 @import "../styles/fonts.css";
+@import "../styles/general-components.css";
 
 .project-grid {
     border: 1px solid yellow;
@@ -26,6 +27,7 @@
 
     h3 {
         font-family: "Archivo Narrow Bold", Arial, Helvetica, sans-serif;
+        font-size: 1.4rem;
     }
 
     p {

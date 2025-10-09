@@ -1,5 +1,5 @@
 @import "../styles/fonts.css";
-@import "../styles/buttons.css";
+@import "../styles/general-components.css";
 
 * {
     margin: 0;
@@ -35,8 +35,6 @@ body {
     gap: 1rem;
 
     h1 {
-        margin-right: auto;
-
         font-family: "Happy Monkey", Arial, Helvetica, sans-serif;
         text-shadow: 1px 2px 3px white;
     }
@@ -51,6 +49,7 @@ body {
 }
 
 .site-navigator {
+    margin-left: auto;
     display: flex;
     gap: 1rem;
 }
