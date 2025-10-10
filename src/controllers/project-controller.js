@@ -38,4 +38,3 @@ bindProjectFormSubmit(createProject);
 bindOpenProject(loadActiveProject);
 bindDeleteProject(deleteProject);
 bindStorageSavingTool(() => saveProjects(projectList));
-console.log("I think I'm online bro...");
